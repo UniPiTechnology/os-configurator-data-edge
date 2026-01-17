@@ -1,0 +1,10 @@
+[Match]
+# rpi3B 1.2, 3B+ 1.2
+Path=platform-3f300000.mmcnr
+# rpi4B 1.5
+Path=platform-fe300000.mmcnr
+# rpi5B 1.0
+Path=platform-1001100000.mmc
+
+[Network]
+# This file serves as template only for unipi-mervis-tools

@@ -1,0 +1,5 @@
+Types: deb
+URIs: https://repo.unipi.technology/debian/
+Suites: trixie
+Components: main edge-main
+Signed-By: /usr/share/keyrings/unipi_next.asc

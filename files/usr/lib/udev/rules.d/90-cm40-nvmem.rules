@@ -1,0 +1,2 @@
+
+ACTION=="add|remove", SUBSYSTEM=="block", DEVPATH=="*fe340000.mmc/mmc_host/mmc0/mmc0:0001/block/mmcblk0/mmcblk0boot1", RUN+="/usr/lib/unipi/uhelper '' nvmem 1 $name"

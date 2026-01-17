@@ -1,0 +1,15 @@
+#!/usr/bin/make -f
+# See debhelper(7) (uncomment to enable)
+# output every command that modifies files on the build system.
+DH_VERBOSE = 1
+
+#LINUX_BUILD_PATH = $(shell dpkg -L unipi-kernel-headers | sed -n '/^\/lib\/modules\/.*\/build$$/p')
+
+%:
+	dh $@
+
+override_dh_auto_clean:
+	dh_auto_clean -- #LINUX_BUILD_PATH="$(LINUX_BUILD_PATH)"
+
+override_dh_auto_build:
+	dh_auto_build -- #LINUX_BUILD_PATH="$(LINUX_BUILD_PATH)"

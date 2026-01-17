@@ -1,0 +1,6 @@
+[Match]
+##  Usb ethernet on Unipi Edge
+Path=platform-fe9c0000.xhci-usb-0:1.1:1.0
+
+[Network]
+# This file serves as template only for unipi-mervis-tools
