@@ -3,7 +3,7 @@
 UNIPI_PRODUCT_ID="$(cat /run/unipi-plc/unipi-id/platform_id)"
 LEDFILE="/usr/share/unipi-os-configurator/ledmaps/${UNIPI_PRODUCT_ID:-.unknown.}"
 
-if ! test "$LEDFILE"; then
+if ! [ -r "$LEDFILE" ]; then
   # it is OK to finish with board without ledproxy
   echo 'WARNING led proxy map not defined for this product.'
   exit 0
