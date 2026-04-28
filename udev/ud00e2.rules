@@ -1,0 +1,20 @@
+
+
+
+ACTION=="add|remove", SUBSYSTEM=="tty", DEVPATH=="*/tty/ttyAMA5", RUN+="/usr/lib/unipi/uhelper mbus.1 tty 1 $name"
+ACTION=="add|remove", SUBSYSTEM=="leds", DEVPATH=="*/leds/mbus-1-txled",  RUN+="/usr/lib/unipi/uhelper mbus.1 led.tx 1 $name"
+ACTION=="add|remove", SUBSYSTEM=="leds", DEVPATH=="*/leds/mbus-1-rxled",  RUN+="/usr/lib/unipi/uhelper mbus.1 led.rx 1 $name"
+ACTION=="add|remove", SUBSYSTEM=="leds", DEVPATH=="*/leds/mbus-1-errled",  RUN+="/usr/lib/unipi/uhelper mbus.1 led.err 1 $name"
+## if using tty-led-trigger
+ACTION=="add", SUBSYSTEM=="leds", DEVPATH=="*/leds/mbus-1-txled", RUN+="/bin/sh -ec 'echo tty > /sys$${DEVPATH}/trigger; echo ttyAMA5 > /sys/$${DEVPATH}/ttyname && echo 0 > /sys/$${DEVPATH}/rx || exit 0'"
+ACTION=="add", SUBSYSTEM=="leds", DEVPATH=="*/leds/mbus-1-rxled", RUN+="/bin/sh -ec 'echo tty > /sys$${DEVPATH}/trigger; echo ttyAMA5 > /sys/$${DEVPATH}/ttyname && echo 0 > /sys/$${DEVPATH}/tx || exit 0'"
+ACTION=="add", SUBSYSTEM=="leds", DEVPATH=="*/leds/mbus-1-errled", RUN+="/bin/sh -ec 'echo gpio > /sys$${DEVPATH}/trigger || exit 0'"
+
+ACTION=="add|remove", SUBSYSTEM=="tty", DEVPATH=="*/tty/ttyAMA4", RUN+="/usr/lib/unipi/uhelper mbus.2 tty 1 $name"
+ACTION=="add|remove", SUBSYSTEM=="leds", DEVPATH=="*/leds/mbus-2-txled",  RUN+="/usr/lib/unipi/uhelper mbus.2 led.tx 1 $name"
+ACTION=="add|remove", SUBSYSTEM=="leds", DEVPATH=="*/leds/mbus-2-rxled",  RUN+="/usr/lib/unipi/uhelper mbus.2 led.rx 1 $name"
+ACTION=="add|remove", SUBSYSTEM=="leds", DEVPATH=="*/leds/mbus-2-errled",  RUN+="/usr/lib/unipi/uhelper mbus.2 led.err 1 $name"
+## if using tty-led-trigger
+ACTION=="add", SUBSYSTEM=="leds", DEVPATH=="*/leds/mbus-2-txled", RUN+="/bin/sh -ec 'echo tty > /sys$${DEVPATH}/trigger; echo ttyAMA4 > /sys/$${DEVPATH}/ttyname && echo 0 > /sys/$${DEVPATH}/rx || exit 0'"
+ACTION=="add", SUBSYSTEM=="leds", DEVPATH=="*/leds/mbus-2-rxled", RUN+="/bin/sh -ec 'echo tty > /sys$${DEVPATH}/trigger; echo ttyAMA4 > /sys/$${DEVPATH}/ttyname && echo 0 > /sys/$${DEVPATH}/tx || exit 0'"
+ACTION=="add", SUBSYSTEM=="leds", DEVPATH=="*/leds/mbus-2-errled", RUN+="/bin/sh -ec 'echo gpio > /sys$${DEVPATH}/trigger || exit 0'"

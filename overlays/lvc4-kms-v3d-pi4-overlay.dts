@@ -2,8 +2,6 @@
  * lvc4-kms-v3d-pi4-overlay.dts
  */
 
-/* #include <dt-bindings/clock/bcm2835.h> */
-
 /dts-v1/;
 /plugin/;
 
@@ -11,14 +9,6 @@
 / {
 	compatible = "brcm,bcm2711";
 
-/*
-	fragment@0 {
-		target = <&cma>;
-		frag0: __overlay__ {
-			size = <((512-4)*1024*1024)>;
-		};
-	};
-*/
 	fragment@1 {
 		target = <&ddc0>;
 		__overlay__  {

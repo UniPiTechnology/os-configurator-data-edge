@@ -16,8 +16,7 @@ CONFIG_INC=$(dirname "$CONFIG_TXT")/config_unipi.inc
 {
 cat <<EOF
 dtparam=i2c_arm=on
-dtoverlay=unipi_id
-dtoverlay=unipi_rtc
+dtoverlay=unipi_uboot
 EOF
 
 for overlay in ${DT}; do

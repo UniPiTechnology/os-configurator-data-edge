@@ -49,6 +49,12 @@ boards = {
     }, has_watchdog1='1' , has_tpm='1' ),
   '206': Board(206, 'UDELAB06',{
     }, has_watchdog1='1' , has_tpm='1' ),
+  '224': Board(224, 'UDEUAC01',{
+    }, dt='ud00e0' , udev='ud00e0' ),
+  '225': Board(225, 'UDEUAC02',{
+    }, dt='ud00e1' , udev='ud00e1' ),
+  '226': Board(226, 'UDEUAC03',{
+    }, dt='ud00e2' , udev='ud00e2' ),
 }
 
 # Family names

@@ -5,18 +5,21 @@
 	fragment@0 {
 		target-path = "/";
 		__overlay__ {
-
-			unipi_id: unipi-id {
-				compatible = "unipi,unipi-id";
-				nvmem = <&unipi_mb>;
-				nvmem-names = "plcid0";
-				id-channel = <&i2c1>;
-			};
-
 			bootcount0 {
 				compatible = "u-boot,bootcount-rtc";
 				rtc = <&rtc_i2c>;
 				offset = <0x20>;
+			};
+			
+			wdt_gpio: wdt-gpio {
+				compatible = "linux,wdt-gpio";
+				hw_margin_ms = <4000>;
+				hw_algo = "level";
+				pinctrl-names = "default";
+				timeout-sec = <10>;
+				pinctrl-0 = <&wd_pins>;
+				gpios = <&gpio 27 0>;
+				status = "okay";
 			};
 		};
 	};
@@ -32,6 +35,7 @@
 			unipi_mb:24c01@57 {
 				compatible = "atmel,24c01";
 				reg = <0x57>;
+				read-only;
 				status = "okay";
 			};
 
@@ -44,6 +48,23 @@
 	};
 
 	fragment@2 {
+		target-path = "/aliases";
+		__overlay__ {
+			unipi_mb = &unipi_mb;
+		};
+	};
+
+	fragment@3 {
+		target = <&gpio>;
+		__overlay__ {
+			wd_pins: wd-pins {
+				brcm,pins = <27>;
+				brcm,function = <1>;
+			};
+		};
+	};
+
+	fragment@4 {
 		target = <&spi6_cs_pins>;
 		__overlay__ {
 			brcm,pins = <18>, <23>, <19>, <20>, <21> ;
@@ -52,7 +73,7 @@
 		};
 	};
 
-	fragment@3 {
+	fragment@5 {
 		target = <&spi6>;
 		__overlay__ {
 			#address-cells = <1>;

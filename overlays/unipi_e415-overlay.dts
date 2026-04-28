@@ -70,6 +70,36 @@
 		};
 	};
 
+	fragment@8 {
+		target = <&i2c1>;
+
+		__overlay__ {
+			#address-cells = <1>;
+			#size-cells = <0>;
+			status = "okay";
+
+			unipi_mb:24c01@57 {
+				compatible = "atmel,24c01";
+				reg = <0x57>;
+				read-only;
+				status = "okay";
+			};
+
+			rtc_i2c:mcp7940x@6f {
+				compatible = "microchip,mcp7941x";
+				reg = <0x6f>;
+				status = "okay";
+			};
+		};
+	};
+
+	fragment@9 {
+		target-path = "/aliases";
+		__overlay__ {
+			unipi_mb = "/soc/i2c@7e804000/24c01@57";
+		};
+	};
+
     fragment@10 {
 		target-path = "/";
 		__overlay__ {
@@ -115,6 +145,7 @@
 			pinctrl-names = "default";
 			pinctrl-0 = <&uart0_ovl_pins>, <&uart0_rts_ovl_pins>;
 			status = "okay";
+			compatible = "arm,pl011", "arm,primecell";
 			linux,rs485-enabled-at-boot-time;
 		};
 	};
