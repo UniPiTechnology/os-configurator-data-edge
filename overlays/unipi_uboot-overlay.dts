@@ -13,6 +13,7 @@
 
 			wdt_gpio: wdt-gpio {
 				compatible = "linux,wdt-gpio";
+				always-running;
 				hw_margin_ms = <4000>;
 				hw_algo = "level";
 				pinctrl-names = "default";
