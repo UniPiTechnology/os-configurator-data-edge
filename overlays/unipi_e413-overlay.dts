@@ -119,7 +119,6 @@
 	fragment@52 {
 		target = <&spi6>;
 		__overlay__ {
-			// needed to avoid dtc warning
 			#address-cells = <1>;
 			#size-cells = <0>;
 			compatible = "brcm,bcm2835-spi";
@@ -474,7 +473,6 @@
 	fragment@801 {
 		target = <&spi6>;
 		__overlay__ {
-			// needed to avoid dtc warning
 			#address-cells = <1>;
 			#size-cells = <0>;
 
