@@ -111,13 +111,12 @@
 				gpios = <&gpio 10 1>;
 				regulator-min-microvolt = <36000000>;
 				regulator-max-microvolt = <36000000>;
+				regulator-boot-on;
 			};
 
 			unipi-mbus {
-				compatible = "unipi-consumer";
-				regulator-name = "display-consumer";
-				regulator-boot-on;
-				regulator-supplies = "vdd_mbus";
+				compatible = "regulator-output";
+				vout-supply = <&reg_ext_mbus>;
 			};
 		};
 	};
