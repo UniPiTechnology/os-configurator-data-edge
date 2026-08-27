@@ -7,6 +7,3 @@ Path=platform-3f980000.usb-usb-0:1.1.1:1.0
 Path=platform-fd580000.ethernet
 ## rpi5B 1.0 (c04170)
 Path=platform-1f00100000.ethernet
-
-[Network]
-# This file serves as template only for unipi-mervis-tools

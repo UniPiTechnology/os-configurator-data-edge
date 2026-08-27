@@ -293,7 +293,7 @@
                         dmas = <&dmamux 19 1>, <&dmamux 20 1>;
                         dma-names = "tx", "rx";
 
-                        fram0: eeprom@0 {
+                        fram0: fram@0 {
                             compatible = "fujitsu,mb85rs1mt", "atmel,at25";
                             reg = <0>;
                             spi-max-frequency = <30000000>;

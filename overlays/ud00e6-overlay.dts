@@ -1,0 +1,81 @@
+
+/dts-v1/;
+/plugin/;
+
+/ {
+	compatible = "brcm,bcm2711";
+
+
+	fragment@6 {
+		target = <&uart5>;
+		__overlay__ {
+			pinctrl-names = "default";
+			pinctrl-0 = <&uart5_gpio12 &pinctrl_uart5_err>;
+			compatible = "arm,pl011", "arm,primecell";
+			status = "okay";
+		};
+	};
+
+	fragment@7 {
+		target = <&gpio>;
+		__overlay__ {
+			pinctrl_uart5_err: pinctrl-uart5-err {
+				brcm,pins = <22>;
+				brcm,function = <0>;
+				brcm,pull = <0x02>;
+			};
+		};
+	};
+
+	fragment@31 {
+		target-path = "/sysled";
+		__overlay__ {
+			mbus_1_txled: mbus-1-txled {
+				gpios = <&uleds_gpio 16 1>;
+				default-state = "off";
+			};
+			mbus_1_rxled: mbus-1-rxled {
+				gpios = <&uleds_gpio 17 1>;
+				default-state = "off";
+			};
+			mbus_1_errled: mbus-1-errled {
+				gpios = <&uleds_gpio 18 1>;
+				default-state = "off";
+				trigger-sources = <&gpio 22 1>;
+			};
+		};
+	};
+
+
+	fragment@91 {
+		target = <&gpio>;
+		__overlay__ {
+			mbus_on_pins: mbus-on-pins {
+				brcm,pins = <10>;
+				brcm,function = <1>;
+				brcm,pull = <0x02>;
+			};
+		};
+	};
+
+	fragment@92 {
+		target-path = "/";
+		__overlay__ {
+			reg_ext_mbus: regulator-ext-mbus {
+				pinctrl-names = "default";
+				pinctrl-0 = <&mbus_on_pins>;
+				compatible = "regulator-fixed";
+				regulator-name = "vdd_mbus";
+				gpios = <&gpio 10 1>;
+				regulator-min-microvolt = <36000000>;
+				regulator-max-microvolt = <36000000>;
+				regulator-boot-on;
+			};
+
+			unipi-mbus {
+				compatible = "regulator-output";
+				vout-supply = <&reg_ext_mbus>;
+			};
+		};
+	};
+};

@@ -12,6 +12,10 @@ dtss += unipi_e415-overlay.dts
 dtss += ud00e0-overlay.dts
 dtss += ud00e1-overlay.dts
 dtss += ud00e2-overlay.dts
+dtss += ud00e3-overlay.dts
+dtss += ud00e5-overlay.dts
+dtss += ud00e6-overlay.dts
+dtss += ud00e7-overlay.dts
 dtss += altboot-overlay.dts
 
 

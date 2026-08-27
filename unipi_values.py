@@ -55,6 +55,14 @@ boards = {
     }, dt='ud00e1' , udev='ud00e1' ),
   '226': Board(226, 'UDEUAC03',{
     }, dt='ud00e2' , udev='ud00e2' ),
+  '227': Board(227, 'UDEUAC04',{
+    }, dt='ud00e3' , udev='ud00e3' ),
+  '229': Board(229, 'UDEUAC06',{
+    }, dt='ud00e5' , udev='ud00e5' ),
+  '230': Board(230, 'UDEUAC07',{
+    }, dt='ud00e6' , udev='ud00e6' ),
+  '231': Board(231, 'UDEUAC08',{
+    }, dt='ud00e7' , udev='ud00e7' ),
 }
 
 # Family names
